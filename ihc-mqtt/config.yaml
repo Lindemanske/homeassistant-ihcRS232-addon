@@ -1,0 +1,57 @@
+name: "IHC RS232 MQTT Bridge"
+version: "1.0.0"
+slug: "ihc_rs232_mqtt"
+description: "Connects LK/Gardy IHC Controller to Home Assistant via RS232 and MQTT"
+url: "https://github.com/JOUW_USERNAME/homeassistant-ihcRS232-addon"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+startup: services
+boot: auto
+hassio_api: true
+hassio_role: default
+homeassistant_api: false
+
+# MQTT service is vereist
+services:
+  - mqtt:need
+
+# USB/Serial device access
+devices:
+  - /dev/ttyUSB0
+  - /dev/ttyUSB1
+  - /dev/ttyAMA0
+  - /dev/serial/by-id
+
+# Configuratie opties
+options:
+  serial_port: "/dev/ttyUSB0"
+  serial_baud: 19200
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_password: ""
+  mqtt_topic: "ihc"
+  num_output_modules: 8
+  num_input_modules: 4
+  poll_interval: 2
+  log_level: "info"
+
+schema:
+  serial_port: str
+  serial_baud: int
+  mqtt_host: str
+  mqtt_port: int
+  mqtt_user: str?
+  mqtt_password: password?
+  mqtt_topic: str
+  num_output_modules: int(1,16)
+  num_input_modules: int(1,16)
+  poll_interval: int(1,30)
+  log_level: list(debug|info|warning|error)
+
+image: "ghcr.io/{arch}-addon-ihc-mqtt"
