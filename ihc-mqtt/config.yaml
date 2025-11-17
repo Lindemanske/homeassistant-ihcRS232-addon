@@ -16,18 +16,15 @@ hassio_api: true
 hassio_role: default
 homeassistant_api: false
 
-# MQTT service is vereist
 services:
   - mqtt:need
 
-# USB/Serial device access
 devices:
   - /dev/ttyUSB0
   - /dev/ttyUSB1
   - /dev/ttyAMA0
   - /dev/serial/by-id
 
-# Configuratie opties
 options:
   serial_port: "/dev/ttyUSB0"
   serial_baud: 19200
@@ -54,4 +51,4 @@ schema:
   poll_interval: int(1,30)
   log_level: list(debug|info|warning|error)
 
-image: "ghcr.io/{arch}-addon-ihc-mqtt"
+image: "ghcr.io/{arch}-addon-ihc-rs232-mqtt"
