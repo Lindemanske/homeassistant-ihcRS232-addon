@@ -43,7 +43,7 @@ See the add-on's Documentation tab for detailed configuration options.
 ## Support
 
 For issues and questions:
-https://github.com/JOUW_USERNAME/homeassistant-ihcRS232-addon/issues
+https://github.com/Lindemanske/homeassistant-ihcRS232-addon/issues
 
 ## License
 
